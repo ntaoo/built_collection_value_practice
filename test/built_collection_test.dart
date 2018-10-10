@@ -39,7 +39,7 @@ void builtListTests() {
         () {
       final c = C('a');
       final l = [c];
-      final l1 = BuiltList<C>.from(l);
+      final l1 = BuiltList<C>(l);
       final l2 = BuiltList<C>.from(l);
 
       expect(l1 == l2, isTrue, reason: 'thanks to the deep comparison.');
@@ -47,7 +47,8 @@ void builtListTests() {
 
       c.name = 'b';
 
-      expect(l1.first == l2.first, isTrue, reason: 'they share same element.');
+      expect(l1 == l2, isTrue, reason: 'they share the same element.');
+      expect(l1.first == l2.first, isTrue, reason: 'they share the same element.');
       expect(l2.first.name, 'b',
           reason:
               'mutated, because they share the same mutable element. NOT recommended.');
