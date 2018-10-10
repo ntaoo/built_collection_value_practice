@@ -1,6 +1,8 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:test/test.dart';
 
+import '../bin/simple_object.dart';
+
 void main() {
   group('Enjoy immutablility with Built Collection.', () {
     builtListTests();
@@ -51,7 +53,29 @@ void builtListTests() {
               'mutated, because they share the same mutable element. NOT recommended.');
     });
 
-    test('BuiltList can be deeply immutable with built values.', () {});
+    test('BuiltList can be deeply immutable with built values.', () {
+      SimpleValue buildValue() {
+        return SimpleValue((b) => b
+          ..anInt = 1
+          ..aString = 'a'
+          ..aListOfStrings = ListBuilder<String>(['one', 'two', 'three']));
+      }
+
+      final l1 = BuiltList<SimpleValue>.from([buildValue()]);
+      final l2 = BuiltList<SimpleValue>.from([buildValue()]);
+
+      expect(l1 == l2, isTrue, reason: 'thanks to the deep comparison.');
+      expect(l1.first == l2.first, isTrue, reason: 'value comparison.');
+
+      final l3 =
+          l2.rebuild((b) => b.first = b.first.rebuild((b) => b..aString = 'b'));
+
+      expect(l2 == l3, isTrue);
+      expect(l1 == l2, isFalse, reason: 'l2 was rebuilt.');
+      expect(l1 == l3, isFalse, reason: 'l3 is l2.');
+      expect(l2.first.aString, 'b');
+      expect(l3.first.aString, 'b');
+    });
 
     test('BuiltList is not a List, but an Iterable', () {
       expect(BuiltList<int>([1]), isNot(isList));
