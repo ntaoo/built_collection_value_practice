@@ -1,7 +1,7 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:test/test.dart';
 
-import '../bin/simple_object.dart';
+import 'package:built_collection_value_practice/simple_object.dart';
 
 void main() {
   group('Enjoy immutablility with Built Collection.', () {
@@ -46,7 +46,7 @@ void builtListTests() {
       expect(l1.first == l2.first, isTrue, reason: 'they share same element.');
 
       c.name = 'b';
-
+      
       expect(l1 == l2, isTrue, reason: 'they share the same element.');
       expect(l1.first == l2.first, isTrue, reason: 'they share the same element.');
       expect(l2.first.name, 'b',

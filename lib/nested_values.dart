@@ -1,7 +1,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-import 'simple_object.dart';
+import 'package:built_collection_value_practice/simple_object.dart';
 
 part 'nested_values.g.dart';
 

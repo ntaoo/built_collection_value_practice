@@ -2,9 +2,9 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:test/test.dart';
 
-import '../bin/nested_values.dart';
-import '../bin/serializers.dart';
-import '../bin/simple_object.dart';
+import 'package:built_collection_value_practice/nested_values.dart';
+import 'package:built_collection_value_practice/serializers.dart';
+import 'package:built_collection_value_practice/simple_object.dart';
 
 void main() {
   group('Enjoy BuiltValue.', () {

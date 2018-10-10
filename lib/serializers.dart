@@ -7,8 +7,8 @@ library serializers;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
-import 'nested_values.dart';
-import 'simple_object.dart';
+import 'package:built_collection_value_practice/nested_values.dart';
+import 'package:built_collection_value_practice/simple_object.dart';
 
 part 'serializers.g.dart';
 
